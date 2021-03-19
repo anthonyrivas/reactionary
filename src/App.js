@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react';
+import {Header} from './components/Header';
+import {Main} from './components/Main';
+import {Footer} from './components/Footer';
+import {ControlledInput} from './components/ControlledInput';
 
 function App() {
+  const [brandName, setBrandName] = useState('Anthony Rivas')
+  const [tagLine, setTagline] = useState('Modern JS for the Modern Businessman')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header brandName={brandName} tagLine={tagLine}>
+        {/* Put links here */}
+      </Header>
+      <Main>
+        <ControlledInput value={brandName} setValue={setBrandName}/>
+        <ControlledInput value={tagLine} setValue={setTagline}/>
+      </Main>
+      <Footer brandName={brandName} ></Footer>
+    </>
   );
 }
 
